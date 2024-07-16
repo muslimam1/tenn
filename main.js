@@ -132,7 +132,7 @@ elSubmitForm.addEventListener('submit', function(evt) {
     evt.preventDefault();
     const data = {
         imgUrl: elRenderImg.src,
-        category: evt.target.category.value,
+        categoryId: evt.target.category.value,
         oldPrice: evt.target.oldPrice.value,
         newPrice: evt.target.newPrice.value,
         frame: evt.target.frame.value,
@@ -142,8 +142,16 @@ elSubmitForm.addEventListener('submit', function(evt) {
     window.localStorage.setItem('products', JSON.stringify(poolProducts));
     elModalWrapper.classList.replace("scale-100", "scale-0");
     renderProducts(poolProducts, elTableBody, data.categoryId);
-    if (data.categoryId === "1") {
+    if (data.categoryId === "0") {
+        navbarItem1.className = "navbar-item1 font-bold text-[35px] leading-[40px] pb-[8px] text-[#009393] border-b-[3px] border-[#009393]"
+        navbarItem2.className = "nabvar-item2 font-bold text-[35px] leading-[40px] text-[#A6A6A6] pb-[8px]"
+    }
+    else if(data.categoryId == "0"){
         navbarItem1.className = "navbar-item2 font-bold text-[35px] leading-[40px] text-[#A6A6A6] pb-[8px]"
         navbarItem2.className = "nabvar-item1 font-bold text-[35px] leading-[40px] pb-[8px] text-[#009393] border-b-[3px] border-[#009393]"
     }
 })
+
+function closeModal(){
+    elModalWrapper.classList.replace("scale-100", "scale-0")
+}
